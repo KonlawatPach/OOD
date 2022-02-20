@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link rel="stylesheet" href="css/addYLO.css">
+    <script src="js/addYLO.js"></script>
+    <title>Learning Outcome</title>
+</head>
+    <body>
+        <div class="container-fluid">
+            <!-- ส่วนหัว -->
+            <div class="row menu-bar text-center" style="height: 80px">
+                <div class="col-1 p-2">
+                    <a href="home.html">
+                        <img class="rounded-circle border border-2" src="/img/homeobe.png" alt="home" width="60px" height="60px">
+                    </a>
+                </div>
+                <div class="col-2" >
+                    <div class="text-start" id="search" style="margin-top: 12px;">
+                        <li>
+                            <a class="ms-3" href="#">ค้นหาข้อมูล</a>
+                        </li>
+                        <div class="search-menu">
+                            <li>
+                                <a href="searchcours.html">ค้นหากระบวนวิชา</a>
+                            </li>
+                            <li>
+                                <a href="searchprogram.html">ค้นหาหลักสูตร</a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6"></div>
+                <div class="col-2 py-2 px-4">
+                    <a href="#">
+                        <div class="border border-1 border-dark h-100 rounded-pill bg-white p-1 text-start">
+                            <img class="img-fluid rounded-circle" src="/img/noprofile.png" alt="profile" style="width: 55px; height:auto;">
+                            <h6 class="d-inline ms-2">อาจารย์บ สุดหล่อ</ฟ>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-1 py-3 px-3">
+                    <div class="row h-100">
+                        <a class="col-6 m-0 border border-1 h-100" style="background-color: rgb(158, 84, 228); padding-top: 8px;">ไทย</a>
+                        <a href="#" class="col-6 m-0 border border-1 h-100" style="background-color: rgb(245, 235, 255); padding-top: 8px;">Eng</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- เนื้อหา -->
+            <div class="container p-0 mx-auto">
+                <div class="container mt-4 p-0" style="width: 90%;">
+                    <!-- ส่วนบนของกล่อง -->
+                    <div class="col-12 border border-1 border-dark p-3 mb-0 fw-bold h5 text-center" style="height: 60px; background-color: rgb(234, 199, 252);">เพิ่ม YLO ของหลักสูตรวิทยาการคอมพิวเตอร์ (ส่วนที่ 3)</div>
+                    
+                    <!-- ส่วนล่างของกล่อง -->
+                    <div class="col-12 border border-1 border-dark text-start px-4 pb-4" style="height: fit-content; background-color: rgb(233, 233, 233);">
+                        <from id="YLOfrom">
+                            <div id="inputFrom">
+                                <div class="bg-light mt-3 p-3 rounded-2" id="1">
+                                    <h5 class="ms-1 fw-bold">ชั้นปีที่ 1</h5>
+                                    <div class="row mt-3 ms-4" id="1-1">
+                                        <div class="col-1 p-0 text-center">YLO 1-1</div>
+                                        <div class="col-9 p-0">
+                                            <input class="w-100" type="text" id="ylo-1-1">
+                                        </div>
+                                        <div class="col-1 p-0 text-center">
+                                            <button class="btn-success rounded-3" onclick="addYLO('1-1')">เพิ่ม YLO</button>
+                                        </div>
+                                        <div class="col-1 p-0 text-center">
+                                            <button class="btn-danger rounded-3" onclick="delYLO('1-1')">ลบ YLO</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3 ms-4" id="1-2">
+                                        <div class="col-1 p-0 text-center">YLO 1-2</div>
+                                        <div class="col-9 p-0">
+                                            <input class="w-100" type="text" id="ylo-1-2">
+                                        </div>
+                                        <div class="col-1 p-0 text-center">
+                                            <button class="btn-success rounded-3" onclick="addYLO('1-2')">เพิ่ม YLO</button>
+                                        </div>
+                                        <div class="col-1 p-0 text-center">
+                                            <button class="btn-danger rounded-3" onclick="delYLO('1-2')">ลบ YLO</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-light mt-1 p-3 rounded-2" id="2">
+                                    <h5 class="ms-1 fw-bold">ชั้นปีที่ 2</h5>
+                                    <div class="row mt-3 ms-4" id="2-1">
+                                        <div class="col-1 p-0 text-center">YLO 2-1</div>
+                                        <div class="col-9 p-0">
+                                            <input class="w-100" type="text" id="ylo-1-1">
+                                        </div>
+                                        <div class="col-1 p-0 text-center">
+                                            <button class="btn-success rounded-3" onclick="addYLO('2-1')">เพิ่ม YLO</button>
+                                        </div>
+                                        <div class="col-1 p-0 text-center">
+                                            <button class="btn-danger rounded-3" onclick="delYLO('2-1')">ลบ YLO</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3 ms-4" id="2-2">
+                                        <div class="col-1 p-0 text-center">YLO 2-2</div>
+                                        <div class="col-9 p-0">
+                                            <input class="w-100" type="text" id="ylo-2-2">
+                                        </div>
+                                        <div class="col-1 p-0 text-center">
+                                            <button class="btn-success rounded-3" onclick="addYLO('2-2')">เพิ่ม YLO</button>
+                                        </div>
+                                        <div class="col-1 p-0 text-center">
+                                            <button class="btn-danger rounded-3" onclick="delYLO('2-2')">ลบ YLO</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-2 p-4 rounded-3 bg-light mx-auto" style="width: fit-content;">
+                                <button type="submit" id="addYear" class="btn btn-success rounded-3" style="width: 150px; height: 50px;" onclick="addYear()">เพิ่มชั้นปี</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="submit" id="delYear" class="btn btn-danger rounded-3" style="width: 150px; height: 50px;" onclick="deleteYear()">ลบชั้นปี</button>
+                            </div>
+
+                            <div class="text-center mt-5">
+                                <button type="submit" id="submit" class="btn btn-secondary" style="width: 100px;">ยืนยัน</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="submit" class="btn btn-secondary" style="width: 100px;">ย้อนกลับ</button>
+                            </div>
+                        </from>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+<style>
+    @import url(coursecss.css);
+</style>
+</head>
+<body>
+    <header>
+        <div class="menu-bar">
+        <ul>
+          <li class="active"><a href="g.html">Home</a></li>
+          <li><a href="#">Search</a>
+            <div class="search-menu">
+              <ul>
+                <li><a href="searchcours.html">ค้นหากระบวนวิชา</a></li>
+                <li><a href="searchprogram.html">ค้นหาหลักสูตร</a></li>
+  
+              </ul>
+            </div>
+          </li>
+          
+        </ul>  
+      </div>
+    </header>
+    <!---cours--->
+    <div class="wrapper">
+        <div class="title">
+            เพิ่มรายละเอียดกระบวนวิชา
+        </div>
+    <form action="processcouse.php" method="POST"> 
+        <div class="forms" >
+            <div class="lalisa"><label>หลักสูตร</label></div>
+                <div class="custom_select">
+                    <select>
+                        <option value="">Select</option>
+                        <option value="204">204</option>
+                     <option value="206">206</option>
+                    </select>
+                </div>
+            <div class="input_feild">
+                <label>รหัสกระบวนวิชา</label>
+                <input type="number"value="" min="0" max="900" class="input" name="courseID" required>
+                <p>*</p>
+            </div> 
+            <div class="input_feild">
+                <label>ชื่อกระบวนวิชา</label>
+                    <input type="text" class="input" name="CourseNameTH" required>
+                    <p>*</p>
+                    <label>Coursename</label>
+                    <input type="text" class="input" name="CourseNameEN" required>
+                    
+                    <p>*</p>
+            </div>
+           <!--- ประเภทของกระบวนวิชา--->
+            <div class="lalisa"><label>ประเภทของกระบวนวิชา</label></div>
+            <div class="input_feild">
+                <input type="radio" id="CourseCategory1" name="CourseCategory" value="general course" required>
+                <label for="CourseCategory1">วิชาศึกษาทั่วไป</label>
+                <input type="radio" id="CourseCategory2" name="CourseCategory" value="required  course" required>
+                <label for="CourseCategory2">วิชาเฉพาะ</label>
+
+            </div>
+            <div class="lalisa"><label>หน่วยกิต</label></div>
+                <div class="input_feild">
+                <input type="number" value=""  min="0" name="CourseCredit" class="input" required>
+                <p>*</p>
+            </div>
+            <div class="lalisa"><label>จำนวนอาจารย์ผู้รับผิดชอบ</label></div>
+            <div class="input_feild">
+                 <input type="number" value="" name="" class="input" required>
+                    <p>*</p>
+            </div>
+            
+            <!---ลักษณะของกระบวนวิชา--->
+            <div class="lalisa"><label>ลักษณะของกระบวนวิชา</label></div>
+            <div class="input_feild" required>
+                <input type="checkbox" id="coursetype1" name="CourseType" value="discourse" >
+                <label for="coursetype1"> บรรยาย</label><br>
+                <input type="checkbox" id="coursetype2" name="CourseType" value="operating" >
+                <label for="coursetype2"> ปฏิบัติการ</label><br>
+                <input type="checkbox" id="coursetype3" name="CourseType" value="coursetype3" >
+                <label for="coursetype3"> ฝึกปฏิบัติ</label><br><br>
+                <input type="checkbox" id="coursetype4" name="CourseType" value="cooperative education" >
+                <label for="coursetype4"> สหกิจศึกษา</label><br><br>
+            </div>
+            <!---การวัดและประเมินผล--->
+            <div class="lalisa"><label>การวัดและประเมินผล</label></div>
+            <div class="input_feild" >
+                <input type="radio" id="evaluate1" name="CMeasurement" value="discourse" required>
+                <label for="evaluate1"> A-F</label><br>
+                <input type="radio" id="evaluate2" name="CMeasurement" value="operating" required>
+                <label for="evaluate2"> S/U</label><br>
+                <input type="radio" id="evaluate3" name="CMeasurement" value="coursetype3" required>
+                <label for="evaluate3"> P</label><br><br>
+            </div>
+            <div class="lalisa"><label>คำอธิบายลักษณะกระบวนวิชา</label></div>
+            <div class="input_feild">
+                <input type="text"  class="input"  name="Cdescription_TH" required>
+                <p>*</p>
+            </div>
+            <div class="lalisa"><label>Course description</label></div>
+            <div class="input_feild" >
+                
+                <input type="text"  class="input"   name="Cdescription_EN" required>
+                <p>*</p>
+            </div>
+           
+        </div>
+        <!---submit--->
+        <input type="Submit" value="Submit">   
+        <input type="reset" value="Clear">
+    </form>
+    </div>
+        
+</body>
+</html>

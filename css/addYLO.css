@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=K2D:wght@300&family=Prompt:wght@300&display=swap');
+
+body{
+    font-family: 'K2D', sans-serif;
+    font-weight: 500;
+    background-image: url("https://www.matichon.co.th/wp-content/uploads/2021/11/S__10453002.jpg");
+}
+
+button:disabled{
+    background-color: gainsboro;
+}
+
+a, a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.menu-bar {
+    background-color: rgb(192, 136, 219);
+    /* background-color: rgb(225, 213, 231); */
+    padding-inline: 20px;
+    font-size: 18px;
+}
+
+.search-menu{
+    display: none;
+}
+
+#search:hover .search-menu{
+    margin-left: 10px;
+    display: block;
+    position: absolute;
+    background: rgb(192, 136, 219);
+}
+
+li{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    list-style: none;
+}
+
+.search-menu li{
+    padding-left: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+}

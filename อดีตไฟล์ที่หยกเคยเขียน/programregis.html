@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  
+<style>
+    @import url(programregis.css);
+</style>
+</head>
+<body>
+    <header>
+        <div class="menu-bar">
+        <ul>
+          <li class="active"><a href="g.html">Home</a></li>
+          <li><a href="#">Search</a>
+            <div class="search-menu">
+              <ul>
+                <li><a href="searchcours.html">ค้นหากระบวนวิชา</a></li>
+                <li><a href="searchprogram.html">ค้นหาหลักสูตร</a></li>
+  
+              </ul>
+            </div>
+          </li>
+          
+        </ul>  
+      </div>
+    </header>
+    <!---Program--->
+    <div class="wrapper">
+        <div class="title">
+            เพิ่มรายละเอียดหลักสูตร
+        </div>
+    <form action="" method="GET"> 
+        <div class="forms" >
+            <!---หลักสูตร--->
+            <div class="input_feild">
+                <label>รหัสหลักสูตร</label>
+                <input type="number"value="0" min="0" max="500" class="input">
+                <p>*</p>
+            </div> 
+            <!---ชื่อหลักสูตร--->
+            <div class="input_feild">
+                <label>ชื่อหลักสูตร</label>
+                <input type="text" class="input">
+                <p>*</p>
+                <label>Program name</label>
+                <input type="text" class="input"><p>*</p>
+            </div>
+        </div> 
+        <div class="container">  
+            <div class="panel panel-default">  
+              <div class="panel-heading"> เพิ่มPLOS </div>  
+              <div class="panel-body">  
+            
+            
+                  <div class="input-group control-group after-add-more">  
+                    <input type="text" name="addmore[]" class="form-control" placeholder="Enter Name Here">  
+                    <div class="input-group-btn">   
+                      <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>  
+                      
+                    </div>  
+                  </div>  
+                  <!-- Copy Fields -->  
+                  <div class="copy hide">  
+                    <div class="control-group input-group" style="margin-top:10px">  
+                      <input type="text" name="addmore[]" class="form-control" placeholder="subplo">  
+                      <div class="input-group-btn">   
+                        <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>  
+                      </div>  
+                    </div>  
+                  </div>  
+            
+              </div>  
+            </div> 
+            <!--PLO2-->
+            <div class="panel panel-default">  
+                <div class="panel-heading"> เพิ่มPLOS </div>  
+                <div class="panel-body">  
+              
+              
+                    <div class="input-group control-group after-add-more">  
+                      <input type="text" name="addmore[]" class="form-control" placeholder="Enter Name Here">  
+                      <div class="input-group-btn">   
+                        <button class="btn btn-success add-more" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>  
+                        
+                      </div>  
+                    </div>  
+                    <!-- Copy Fields -->  
+                    <div class="copy hide">  
+                      <div class="control-group input-group" style="margin-top:10px">  
+                        <input type="text" name="addmore[]" class="form-control" placeholder="subplo">  
+                        <div class="input-group-btn">   
+                          <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>  
+                        </div>  
+                      </div>  
+                    </div>  
+              
+                </div>  
+              </div>   
+        </div>
+          
+         <!---submit--->
+        <input type="Submit" value="Submit">
+        <input type="reset" value="Clear">
+    </form> 
+    </div>
+    <script type="text/javascript">  
+  
+        $(document).ready(function() {  
+      
+          $(".add-more").click(function(){   
+              var html = $(".copy").html();  
+              $(".after-add-more").after(html);  
+          });  
+      
+          $("body").on("click",".remove",function(){   
+              $(this).parents(".control-group").remove();  
+          });  
+      
+        });  
+      
+    </script>
+</body>
+</html>
