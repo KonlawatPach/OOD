@@ -4,10 +4,7 @@ body{
     font-family: 'K2D', sans-serif;
     font-weight: 500;
     background-image: url("https://www.matichon.co.th/wp-content/uploads/2021/11/S__10453002.jpg");
-}
-
-button:disabled{
-    background-color: gainsboro;
+    background-size: cover;
 }
 
 a, a:hover{
@@ -27,7 +24,6 @@ a, a:hover{
 }
 
 #search:hover .search-menu{
-    margin-left: 10px;
     display: block;
     position: absolute;
     background: rgb(192, 136, 219);
@@ -36,8 +32,12 @@ a, a:hover{
 li{
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-right: 20px;
+    padding-right: 56px;
     list-style: none;
+}
+
+li:hover{
+    background: rgb(168, 90, 207);
 }
 
 .search-menu li{
