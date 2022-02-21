@@ -60,67 +60,67 @@
                     
                     <!-- ส่วนล่างของกล่อง -->
                     <div class="col-12 border border-1 border-dark text-start px-4 pb-4" style="height: fit-content; background-color: rgb(233, 233, 233);">
-                        <from id="YLOfrom">
-                            <div id="inputFrom">
+                        <form id="YLOform" onsubmit="addYLOData();return false;">
+                            <div id="inputForm">
                                 <div class="bg-light mt-3 p-3 rounded-2" id="1">
                                     <h5 class="ms-1 fw-bold">ชั้นปีที่ 1</h5>
                                     <div class="row mt-3 ms-4 ylobody1" id="1-1">
                                         <div class="col-1 p-0 text-center ylo1">YLO 1-1</div>
                                         <div class="col-9 p-0">
-                                            <input class="w-100 yloinput1" type="text" id="ylo-1-1">
+                                            <input class="w-100 yloinput1" required type="text" id="ylo-1-1">
                                         </div>
                                         <div class="col-1 p-0 text-center">
-                                            <button class="btn btn-success btn-sm rounded-3 addylobtn1" onclick="addYLO('1-1')">เพิ่ม YLO</button>
+                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn1" onclick="addYLO('1-1')">เพิ่ม YLO</button>
                                         </div>
                                         <div class="col-1 p-0 text-center">
-                                            <button class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-1')">ลบ YLO</button>
+                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-1')">ลบ YLO</button>
                                         </div>
                                     </div>
                                     <div class="row mt-3 ms-4 ylobody1" id="1-2">
                                         <div class="col-1 p-0 text-center ylo1">YLO 1-2</div>
                                         <div class="col-9 p-0">
-                                            <input class="w-100 yloinput1" type="text" id="ylo-1-2">
+                                            <input class="w-100 yloinput1" required type="text" id="ylo-1-2">
                                         </div>
                                         <div class="col-1 p-0 text-center">
-                                            <button class="btn btn-success btn-sm rounded-3 addylobtn1" onclick="addYLO('1-2')">เพิ่ม YLO</button>
+                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn1" onclick="addYLO('1-2')">เพิ่ม YLO</button>
                                         </div>
                                         <div class="col-1 p-0 text-center">
-                                            <button class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-2')">ลบ YLO</button>
+                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-2')">ลบ YLO</button>
                                         </div>
                                     </div>
                                 </div>
-
+                                
                                 <div class="bg-light mt-1 p-3 rounded-2" id="2">
                                     <h5 class="ms-1 fw-bold">ชั้นปีที่ 2</h5>
                                     <div class="row mt-3 ms-4 ylobody2" id="2-1">
                                         <div class="col-1 p-0 text-center ylo2">YLO 2-1</div>
                                         <div class="col-9 p-0">
-                                            <input class="w-100 yloinput2" type="text" id="ylo-2-1">
+                                            <input class="w-100 yloinput2" required type="text" id="ylo-2-1">
                                         </div>
                                         <div class="col-1 p-0 text-center">
-                                            <button class="btn btn-success btn-sm rounded-3 addylobtn2" onclick="addYLO('2-1')">เพิ่ม YLO</button>
+                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn2" onclick="addYLO('2-1')">เพิ่ม YLO</button>
                                         </div>
                                         <div class="col-1 p-0 text-center">
-                                            <button class="btn btn-danger btn-sm rounded-3 delylobtn2" onclick="delYLO('2-1')">ลบ YLO</button>
+                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn2" onclick="delYLO('2-1')">ลบ YLO</button>
                                         </div>
                                     </div>
                                     <div class="row mt-3 ms-4 ylobody2" id="2-2">
                                         <div class="col-1 p-0 text-center ylo2">YLO 2-2</div>
                                         <div class="col-9 p-0">
-                                            <input class="w-100 yloinput2" type="text" id="ylo-2-2">
+                                            <input class="w-100 yloinput2" required type="text" id="ylo-2-2">
                                         </div>
                                         <div class="col-1 p-0 text-center">
-                                            <button class="btn btn-success btn-sm rounded-3 addylobtn2" onclick="addYLO('2-2')">เพิ่ม YLO</button>
+                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn2" onclick="addYLO('2-2')">เพิ่ม YLO</button>
                                         </div>
                                         <div class="col-1 p-0 text-center">
-                                            <button class="btn btn-danger btn-sm rounded-3 delylobtn2" onclick="delYLO('2-2')">ลบ YLO</button>
+                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn2" onclick="delYLO('2-2')">ลบ YLO</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="text-center mt-2 p-4 rounded-3 bg-light mx-auto" style="width: fit-content;">
-                                <button type="button" id="addYear" class="btn btn-success rounded-3" style="width: 150px; height: 50px;" onclick="addYear()">เพิ่มชั้นปี</button>
+                                <button type="button" class="btn btn-success rounded-3" style="width: 150px; height: 50px;" onclick="addYear()">เพิ่มชั้นปี</button>    
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button type="button" id="delYear" class="btn btn-danger rounded-3" style="width: 150px; height: 50px;" onclick="deleteYear()">ลบชั้นปี</button>
                             </div>
@@ -128,9 +128,9 @@
                             <div class="text-center mt-5">
                                 <button type="submit" id="submit" class="btn btn-secondary" style="width: 100px;">ยืนยัน</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="submit" class="btn btn-secondary" style="width: 100px;">ย้อนกลับ</button>
+                                <button type="button" class="btn btn-secondary" style="width: 100px;">ย้อนกลับ</button>
                             </div>
-                        </from>
+                        </form>
                     </div>
                 </div>
             </div>
