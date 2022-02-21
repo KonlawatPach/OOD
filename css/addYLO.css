@@ -3,18 +3,23 @@
 body{
     font-family: 'K2D', sans-serif;
     font-weight: 500;
-    background-image: url("https://www.matichon.co.th/wp-content/uploads/2021/11/S__10453002.jpg");
+    background-image: url("https://5jime.files.wordpress.com/2015/10/60cb2-dscf3260.jpg?w=1600&h=900");
     background-size: cover;
 }
 
 a, a:hover{
     text-decoration: none;
-    color: black;
+    color: rgb(0, 0, 0);
+}
+
+textarea{
+    height: 34px;
+    border-width: 2px;
+    border-color: black;
 }
 
 .menu-bar {
     background-color: rgb(192, 136, 219);
-    /* background-color: rgb(225, 213, 231); */
     padding-inline: 20px;
     font-size: 18px;
 }
