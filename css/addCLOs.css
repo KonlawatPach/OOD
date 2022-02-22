@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.addCLOContainer {
+    margin: 4vh 0 0 0;
+    height: auto;
+    background-color: white;
+}
+
+.CategoryBar {
+    margin-top: 0px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(225, 213, 231);
+    width: 100%;
+    border: 2px solid rgb(177, 151, 190);
+}
+
+h1 {
+    text-align: center;
+}
+
+.CLOForm {
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    height: 10vh;
+    margin:3vh 3vh 0 15vw;
+    border:1px solid gray;
+    background-color: rgb(245, 245, 245);
+    justify-content: block;
+}
+
+.RedStar {
+    color:red;
+}
+
+.CLOInutForm {
+    display:flex;
+    flex-direction: column;
+    vertical-align: middle;
+    width: 70%;
+    height: auto;
+    justify-content: center;
+    padding-left: 2vw;
+}
+input.CLOInutForm {
+    width: 70%;
+    height: auto;
+}
+
+.DeleteCLOForm {
+    margin-left: 30%;
+    justify-content: right;
+    font-size: 1em;
+}
+
+.DeleteCLOFormButton:active {
+    background-color : gray;
+}
+
+.addCLOsForm {
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
+    width: 70vw;
+    margin:3vh 3vh 0 15vw;
+}
+
+.addCLOsFormButton {
+    background-color: rgb(222, 222, 222);
+    border: 1px solid;
+    font-size: 2em;
+}
+
+.addCLOsFormButton:active {
+    background-color: gray;
+}
+
+.SubmitAndBack {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5vh; 
+    /* border: 1px solid black; */
+    height: 5vh;
+    
+}
+
+.SubmitButton {
+    margin:auto;
+    background-color: rgb(213, 232, 212);
+    height: 100%;
+    width: 15%;
+    border: 1px solid;
+}
+
+.SubmitButton:active {
+    background-color: rgb(173, 192, 172)
+}
+
+.BackButton {
+    margin:auto;
+    background-color: rgb(255, 242, 204);
+    height:100%;
+    width: 15%;
+    border: 1px solid;
+}
+
+.BackButton:active {
+    background-color: rgb(215, 202, 164);
+    
+}
+
+.emptyForBeautiful {
+    height: 5vh;
+}
