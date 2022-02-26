@@ -43,19 +43,19 @@ function deleteYear(){
 
 function addYLO(yloID){
     yloID = yloID.split('-')
-    $("#"+ yloID[0] +`-`+ (Number(yloID[1]))).after(`
-    <div class="row mt-3 ms-4 ylobody`+ yloID[0] +`" id="`+yloID[0] +`-`+(Number(yloID[1])+1)+`">
-        <div class="col-1 p-0 text-center ylo`+ yloID[0] +`">YLO `+ yloID[0] +`-`+ (Number(yloID[1])+1) +`<span class="text-danger"> *</span></div>
-        <div class="col-9 p-0">
-            <textarea class="w-100 yloinput`+ yloID[0] +`" required autocomplete="off" type="text" id="ylo-`+ yloID[0] +`-`+ (Number(yloID[1])+1) +`" onchange="haveSameText()"></textarea>
+    $("#"+ yloID[0] +`-`+ yloID[1] ).after(`
+        <div class="row mt-3 ms-4 ylobody`+ yloID[0] +`" id="`+yloID[0] +`-`+(Number(yloID[1])+1)+`">
+            <div class="col-1 p-0 text-center ylo`+ yloID[0] +`">YLO `+ yloID[0] +`-`+ (Number(yloID[1])+1) +`<span class="text-danger"> *</span></div>
+            <div class="col-9 p-0">
+                <textarea class="w-100 yloinput`+ yloID[0] +`" required autocomplete="off" type="text" id="ylo-`+ yloID[0] +`-`+ (Number(yloID[1])+1) +`" onchange="haveSameText()"></textarea>
+            </div>
+            <div class="col-1 p-0 text-center">
+                <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn`+ yloID[0] +`" onclick="addYLO('`+ yloID[0] +`-`+ (Number(yloID[1])+1) +`')">เพิ่ม YLO</button>
+            </div>
+            <div class="col-1 p-0 text-center">
+                <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn`+ yloID[0] +`" onclick="delYLO('`+ yloID[0] +`-`+ (Number(yloID[1])+1) +`')">ลบ YLO</button>
+            </div>
         </div>
-        <div class="col-1 p-0 text-center">
-            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn`+ yloID[0] +`" onclick="addYLO('`+ yloID[0] +`-`+ (Number(yloID[1])+1) +`')">เพิ่ม YLO</button>
-        </div>
-        <div class="col-1 p-0 text-center">
-            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn`+ yloID[0] +`" onclick="delYLO('`+ yloID[0] +`-`+ (Number(yloID[1])+1) +`')">ลบ YLO</button>
-        </div>
-    </div>
     `);
     sortNumber(yloID[0])
 }
