@@ -1,13 +1,14 @@
 function addPLO(PLOnumber){
-    $(`
-        <div class="bg-light rounded-3 mt-3 p-2 px-3" id="`+ ++PLOnumber +`">
+    if(document.getElementsByClassName("plo").length > PLOnumber) addSubPLOdata(PLOnumber);
+    $("#"+PLOnumber).after(`
+        <div class="bg-light rounded-3 mt-3 p-2 px-3 plohead" id="`+ ++PLOnumber +`">
             <div class="row">
                 <div class="col-10">
                     <h6 class="fw-bold plo">(`+ PLOnumber +`) ผลลัพธ์การเรียนรู้หลักสูตร (Program Learning Outcomes: PLOs)</h6>
                     <textarea class="mt-2 ploinput" required autocomplete="off" style="width: 80%;"></textarea>
                 </div>
                 <div class="col-1 text-center px-0">
-                    <button type="button" class="btn btn-primary" onclick="addPLO(`+ PLOnumber +`);">เพิ่ม PLO</button>
+                    <button type="button" class="btn btn-primary addplobtn" onclick="addPLO(`+ PLOnumber +`);">เพิ่ม PLO</button>
                 </div>
                 <div class="col-1 text-center px-0">
                     <button type="button" class="btn btn-danger delplobtn" onclick="delPLO(`+ PLOnumber +`)">ลบ PLO</button>
@@ -41,22 +42,75 @@ function addPLO(PLOnumber){
 
             </div>
         </div>
-    `).appendTo("#inputForm");
+    `);
     sortPLO();
 }
 
 function delPLO(PLOnumber){
     $("#" + PLOnumber).remove();
+    delSubPLOdata(PLOnumber)
     sortPLO();
 }
 
 function sortPLO(){
     let x = document.getElementsByClassName("plo")
     for (let i = 1; i <= x.length; i++) {
-        document.getElementsByClassName("plo")[i-1].textContent = "("+ i +") ผลลัพธ์การเรียนรู้หลักสูตร (Program Learning Outcomes: PLOs)"; 
+        document.getElementsByClassName("plohead")[i-1].setAttribute("id", i );
+        document.getElementsByClassName("plo")[i-1].textContent = "("+ i +") ผลลัพธ์การเรียนรู้หลักสูตร (Program Learning Outcomes: PLOs)";
+        sortSubPLO(i);
     }
     if(x.length == 1) document.getElementsByClassName("delplobtn")[0].disabled = true;
     else document.getElementsByClassName("delplobtn")[0].disabled = false;
+}
+
+function addSubPLOdata(PLOnumber){
+    for (let subPLONumber = document.getElementsByClassName("plo").length; subPLONumber > PLOnumber; subPLONumber--) {
+        let x = document.getElementsByClassName("subplo"+subPLONumber).length
+        document.getElementsByClassName("addplobtn")[subPLONumber-1].setAttribute( "onClick", "addPLO('"+ (Number(subPLONumber)+1) + "')");
+        document.getElementsByClassName("delplobtn")[subPLONumber-1].setAttribute( "onClick", "delPLO('"+ (Number(subPLONumber)+1) + "')");
+        for (let i = 1; i <= x; i++) {
+            document.getElementsByClassName("subplo" + subPLONumber)[0].setAttribute("id", (Number(subPLONumber)+1) +"-"+ i );
+            document.getElementsByClassName("subplo" + subPLONumber)[0].classList.add("subplo" + (Number(subPLONumber)+1));
+            document.getElementsByClassName("subplo" + subPLONumber)[0].classList.remove("subplo" + subPLONumber);
+            document.getElementsByClassName("subplotext" + subPLONumber)[0].textContent = "SubPLOs "+ (Number(subPLONumber)+1) +"."+ i;
+            document.getElementsByClassName("subplotext" + subPLONumber)[0].classList.add("subplotext" + (Number(subPLONumber)+1))
+            document.getElementsByClassName("subplotext" + subPLONumber)[0].classList.remove("subplotext" + subPLONumber)
+            document.getElementsByClassName("subploinput" + subPLONumber)[0].setAttribute("id", (Number(subPLONumber)+1) +"-"+ i );
+            document.getElementsByClassName("subploinput" + subPLONumber)[0].classList.add("subploinput" + (Number(subPLONumber)+1))
+            document.getElementsByClassName("subploinput" + subPLONumber)[0].classList.remove("subploinput" + subPLONumber)
+            document.getElementsByClassName("addsubplobtn" + subPLONumber)[0].setAttribute( "onClick", "addSubPLO('"+ (Number(subPLONumber)+1) + "-"+ i +"')" );
+            document.getElementsByClassName("addsubplobtn" + subPLONumber)[0].classList.add("addsubplobtn" + (Number(subPLONumber)+1))
+            document.getElementsByClassName("addsubplobtn" + subPLONumber)[0].classList.remove("addsubplobtn" + subPLONumber)
+            document.getElementsByClassName("delsubplobtn" + subPLONumber)[0].setAttribute( "onClick", "delSubPLO('"+ (Number(subPLONumber)+1) + "-"+ i +"')" );
+            document.getElementsByClassName("delsubplobtn" + subPLONumber)[0].classList.add("delsubplobtn" + (Number(subPLONumber)+1))
+            document.getElementsByClassName("delsubplobtn" + subPLONumber)[0].classList.remove("delsubplobtn" + subPLONumber)
+        }   
+    }
+}
+
+function delSubPLOdata(PLOnumber){
+    for (let subPLONumber = PLOnumber; subPLONumber <= document.getElementsByClassName("plo").length; subPLONumber++) {
+        let x = document.getElementsByClassName("subplo"+(subPLONumber+1)).length
+        document.getElementsByClassName("addplobtn")[subPLONumber-1].setAttribute( "onClick", "addPLO('"+ (Number(subPLONumber)) + "')");
+        document.getElementsByClassName("delplobtn")[subPLONumber-1].setAttribute( "onClick", "delPLO('"+ (Number(subPLONumber)) + "')");
+        for (let i = 1; i <= x; i++) {
+            document.getElementsByClassName("subplo" + (subPLONumber+1))[0].setAttribute("id", subPLONumber +"-"+ i );
+            document.getElementsByClassName("subplo" + (subPLONumber+1))[0].classList.add("subplo" + subPLONumber);
+            document.getElementsByClassName("subplo" + (subPLONumber+1))[0].classList.remove("subplo" + (Number(subPLONumber)+1));
+            document.getElementsByClassName("subplotext" + (subPLONumber+1))[0].textContent = "SubPLOs "+ subPLONumber +"."+ i;
+            document.getElementsByClassName("subplotext" + (subPLONumber+1))[0].classList.add("subplotext" + subPLONumber)
+            document.getElementsByClassName("subplotext" + (subPLONumber+1))[0].classList.remove("subplotext" + (Number(subPLONumber)+1))
+            document.getElementsByClassName("subploinput" + (subPLONumber+1))[0].setAttribute("id", subPLONumber +"-"+ i );
+            document.getElementsByClassName("subploinput" + (subPLONumber+1))[0].classList.add("subploinput" + subPLONumber)
+            document.getElementsByClassName("subploinput" + (subPLONumber+1))[0].classList.remove("subploinput" + (Number(subPLONumber)+1))
+            document.getElementsByClassName("addsubplobtn" + (subPLONumber+1))[0].setAttribute( "onClick", "addSubPLO('"+ subPLONumber + "-"+ i +"')" );
+            document.getElementsByClassName("addsubplobtn" + (subPLONumber+1))[0].classList.add("addsubplobtn" + subPLONumber)
+            document.getElementsByClassName("addsubplobtn" + (subPLONumber+1))[0].classList.remove("addsubplobtn" + (Number(subPLONumber)+1))
+            document.getElementsByClassName("delsubplobtn" + (subPLONumber+1))[0].setAttribute( "onClick", "delSubPLO('"+ subPLONumber + "-"+ i +"')" );
+            document.getElementsByClassName("delsubplobtn" + (subPLONumber+1))[0].classList.add("delsubplobtn" + subPLONumber)
+            document.getElementsByClassName("delsubplobtn" + (subPLONumber+1))[0].classList.remove("delsubplobtn" + (Number(subPLONumber)+1))
+        }   
+    }
 }
 
 function addSubPLO(subPLONumber){
