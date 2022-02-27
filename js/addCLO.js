@@ -68,6 +68,7 @@ function sortNumCLO(){
 
 function submit() {
 
+    
     if (checkDubplicated()) {
         alert("มีการกรอกข้อมูลซ้ำ กรุณาทำการแก้ไข");
     }
@@ -75,6 +76,10 @@ function submit() {
     if (checkEmptySpace()) {
         alert("ยังมีข้อความที่เป็นช่องว่างอยู่ กรุณาทำการแก้ไข");
     }
+    db.collection("CLO").add({
+        CLO_ID: 1,
+        CLODescription: "ชายเกเร"
+    });
 }
 
 function checkEmptySpace() {
