@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/addYLO.css">
         <link rel = "stylesheet" href ="css/addCLOs.css">
         <script src="js/addYLO.js"></script>
+        <script src="js/addCLO.js"></script>
         <title>Add CLOs description</title>
     </head>
     
@@ -53,32 +54,33 @@
                     </div>
                 </div>
             </div>
+            <!-- ส่วนเนื้อหา -->
             <div class = "addCLOContainer">
-            <div class = "CategoryBar"><h2>ระบุรายละเอียด CLOs ของกระบวนวิชา 204xxx</h2></div>    
+                <div class = "CategoryBar"><h2>ระบุรายละเอียด CLOs ของกระบวนวิชา 204xxx</h2></div>    
                 <div class = "Content">
                     
                     <!-- some code about clo contents -->
-                    <div class ="CLOForm">
+                    <div class ="CLOForm" id = "1">
                         <div class = "CLOInutForm">
-                            <span>(x)ผลลัพธ์การเรียนรู้กระบวนวิชา (Course Learning Outcomes: CLOs)<span class = "RedStar">*</span></span>
-                            <textarea></textarea>
+                            <span class = "forSortCLO">(<span>1</span>)ผลลัพธ์การเรียนรู้กระบวนวิชา (Course Learning Outcomes: CLOs)<span class = "RedStar">*</span></span>
+                            <textarea class = "CLODesBox" required autocomplete="off" onchange="haveSameText()"></textarea>
                         </div>
-                        <div class = "DeleteCLOForm"><button class = "DeleteCLOFormButton">X</button></div>
+                        <div class = "DeleteCLOForm"><button class = "DeleteCLOFormButton" id ="delCLOButton" onclick = "deleteCLO(this.parentNode.parentNode.id)">X</button></div>
                     </div>
-                    <div class ="CLOForm">
+                    <div class ="CLOForm" id = "2">
                         <div class = "CLOInutForm">
-                            <span>(x)ผลลัพธ์การเรียนรู้กระบวนวิชา (Course Learning Outcomes: CLOs)<span class = "RedStar">*</span></span>
-                            <textarea></textarea>
+                            <span class = "forSortCLO">(<span>2</span>)ผลลัพธ์การเรียนรู้กระบวนวิชา (Course Learning Outcomes: CLOs)<span class = "RedStar">*</span></span>
+                            <textarea class = "CLODesBox" required autocomplete="off" onchange="haveSameText()"></textarea>
                         </div>
-                        <div class = "DeleteCLOForm"><button class = "DeleteCLOFormButton">X</button></div>
+                        <div class = "DeleteCLOForm"><button class = "DeleteCLOFormButton" id ="delCLOButton" onclick = "deleteCLO(this.parentNode.parentNode.id)">X</button></div>
                     </div>
                     
                 </div>
                 <div class = "addCLOsForm">
-                    <button class = "addCLOsFormButton">เพิ่ม CLO</button>
+                    <button class = "addCLOsFormButton" onclick = "addCLO()">เพิ่ม CLO</button>
                 </div>
                 <div class = "SubmitAndBack">
-                    <button class = "SubmitButton">ระบุสัดส่วน CLO</button>
+                    <button class = "SubmitButton" onclick = "submit()">ระบุสัดส่วน CLO</button>
                     <button class = "BackButton">ย้อนกลับ</button>
                 </div>
                 <div class = "emptyForBeautiful"></div>
