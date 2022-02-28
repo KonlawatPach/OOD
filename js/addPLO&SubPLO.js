@@ -7,9 +7,9 @@ class PLO {
 }
 
 class subPLO {
-    constructor(subPLODescription) {
+    constructor(PLOID, subPLODescription) {
         this.PID = "204";
-        this.PLOID = "204";
+        this.PLOID = PLOID;
         this.SubPLOdescription = subPLODescription;
     }
 }
@@ -172,29 +172,41 @@ $("#PLOSubPLOform").submit(function(e) {
     e.preventDefault();
 });
 
-function addPLOSubPLOData(){
+async function addPLOSubPLOData(){
     if(!haveSameText()){
         if(!await isInDatabase()){
             //new object
             let plodata = [];
             for(let p = 1; p <= document.getElementsByClassName("ploinput").length; p++){
-                    plodata.push(new YLOdata(PLODescription))
-            }        
-            
-            //add to database
-            for(let i of plodata){
-                db.collection("YLO").add({
-                    PID: i.PID,
-                    YLONumber: i.YLONumber,
-                    YLOYear: i.YLOYear,
-                    YLODescription: i.YLODescription,
-                    ProgramYear: i.ProgramYear
-                });
+                plodata.push(new PLO(document.getElementsByClassName("ploinput")[p-1].value))
             }
-            alert("เพิ่มข้อมูล YLO สำเร็จ")
+            
+            //add plo to database
+            for(let i in plodata){
+                db.collection("PLO").add({
+                    PID: plodata[i].PID,
+                    PLOdescription: plodata[i].PLODescription,
+                    ProgramYear: plodata[i].ProgramYear
+                }).then((lastplo) => {
+                    let subplodata = [];
+                    for(let s = 1; s <= document.getElementsByClassName("subploinput" + (Number(i)+1)).length; s++){
+                        subplodata.push(new subPLO(lastplo.id, document.getElementsByClassName("subploinput" + (Number(i)+1))[s-1].value))
+                        
+                    }  
+                    
+                    for(let j in subplodata){
+                        db.collection("SUBPLO").add({
+                            PID : subplodata[j].PID,
+                            PLO_ID : subplodata[j].PLOID,
+                            SubPLOdescription : subplodata[j].SubPLOdescription
+                        });
+                    } 
+                })
+            }
+            alert("เพิ่มข้อมูล PLO&SubPLO สำเร็จ")
         }
         else{
-            alert("มีข้อมูล YLO นี้ในระบบอยู่แล้ว")
+            alert("มีข้อมูล PLO&SubPLO นี้ในระบบอยู่แล้ว")
         }
     }
 }

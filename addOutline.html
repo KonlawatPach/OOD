@@ -7,6 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="js/connecttofirebase.js"></script>
     <link rel="stylesheet" href="css/addOutline.css">
     <script src="js/addOutline.js"></script>
     <title>Learning Outcome</title>
@@ -61,68 +64,103 @@
                     <!-- ส่วนล่างของกล่อง -->
                     <div class="col-12 border border-1 border-dark text-start px-4 pb-4" style="height: fit-content; background-color: rgb(233, 233, 233);">
                         <h6 class="ms-1 my-3 fw-bold text-center">ส่วนเนื้อหากระบวนวิชา</h6>
-                        <form id="Outlineform" onsubmit="addYLOData();return false;">
-                            <div id="inputForm">
-                                <div class="bg-light mt-3 p-3 rounded-2" id="1">
-                                    <div class="row mt-3 ms-0 outlinebody1" id="1-1">
-                                        <div class="col-2 p-0 text-center outline1">ลักษณะการเก็บชั่วโมงแบบที่ 1<span class="text-danger"> *</span></div>
-                                        <div class="col-8 p-0">
-                                            <textarea class="w-100 Outlineinput1" required autocomplete="off" type="text" id="ol-1-1" onchange="haveSameText()"></textarea>
-                                        </div>
-                                        <div class="col-2 p-0  text-center">
-                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn1" onclick="addYLO('1-1')">เพิ่มลักษณะการเก็บชั่วโมง</button>
-                                        </div>
-                                        <div class="col-2 p-0 text-center">
-                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-1')">ลบลักษณะการเก็บชั่วโมง</button>
-                                        </div>
+                        <form id="Outlineform" onsubmit="addOutlineData();return false;">
+                            <div id="topinputForm">
+
+                                <div class="row text-end" id="t1">
+                                    <div class="col-3 px-0">
+                                        <div>ลักษณะการเก็บชั่วโมงแบบที่ 1</div>
                                     </div>
-                                    <div class="row mt-3 ms-4 outlinebody1" id="1-2">
-                                        <div class="col-2 p-0 text-center outlinebody1">ลักษณะการเก็บชั่วโมงแบบที่ 2<span class="text-danger"> *</span></div>
-                                        <div class="col-8 p-0">
-                                            <textarea class="w-100 outlinebody1" required autocomplete="off" type="text" id="ol-1-2" onchange="haveSameText()"></textarea>
-                                        </div>
-                                        <div class="col-3 p-0 text-center">
-                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn1" onclick="addYLO('1-2')">เพิ่มลักษณะการเก็บชั่วโมง</button>
-                                        </div>
-                                        <div class="col-3 p-0 text-center">
-                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-2')">ลบลักษณะการเก็บชั่วโมง</button>
-                                        </div>
+                                    <div class="col-4 px-4">
+                                        <input class="w-100 hourtype" required autocomplete="off" type="text">
+                                    </div>
+                                    <div class="col-2 px-0">
+                                        <button type="button" class="btn btn-success btn-sm rounded-3" onclick="addType(1)">เพิ่มลักษณะการเก็บชั่วโมง</button>
+                                    </div>
+                                    <div class="col-2 px-0">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-3" onclick="delType(1)">ลบลักษณะการเก็บชั่วโมง</button>
                                     </div>
                                 </div>
-                                
-                                <div class="bg-light mt-1 p-3 rounded-2" id="2">
-                                    <h5 class="ms-1 fw-bold">ชั้นปีที่ 2</h5>
-                                    <div class="row mt-3 ms-4 ylobody2" id="2-1">
-                                        <div class="col-1 p-0 text-center ylo2">YLO 2-1<span class="text-danger"> *</span></div>
-                                        <div class="col-9 p-0">
-                                            <textarea class="w-100 yloinput2" required autocomplete="off" type="text" id="ylo-2-1" onchange="haveSameText()"></textarea>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn2" onclick="addYLO('2-1')">เพิ่ม YLO</button>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn2" onclick="delYLO('2-1')">ลบ YLO</button>
-                                        </div>
+
+                                <div class="row text-end mt-1" id="t2">
+                                    <div class="col-3 px-0">
+                                        <div>ลักษณะการเก็บชั่วโมงแบบที่ 2</div>
                                     </div>
-                                    <div class="row mt-3 ms-4 ylobody2" id="2-2">
-                                        <div class="col-1 p-0 text-center ylo2">YLO 2-2<span class="text-danger"> *</span></div>
-                                        <div class="col-9 p-0">
-                                            <textarea class="w-100 yloinput2" required autocomplete="off" type="text" id="ylo-2-2" onchange="haveSameText()"></textarea>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn2" onclick="addYLO('2-2')">เพิ่ม YLO</button>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn2" onclick="delYLO('2-2')">ลบ YLO</button>
-                                        </div>
+                                    <div class="col-4 px-4">
+                                        <input class="w-100 hourtype" required autocomplete="off" type="text">
+                                    </div>
+                                    <div class="col-2 px-0">
+                                        <button type="button" class="btn btn-success btn-sm rounded-3" onclick="addType(2)">เพิ่มลักษณะการเก็บชั่วโมง</button>
+                                    </div>
+                                    <div class="col-2 px-0">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-3" onclick="delType(2)">ลบลักษณะการเก็บชั่วโมง</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="text-center mt-2 p-4 rounded-3 bg-light mx-auto" style="width: fit-content;">
-                                <button type="button" class="btn btn-success rounded-3" style="width: 150px; height: 50px;" onclick="addYear()">เพิ่มชั้นปี</button>    
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" id="delYear" class="btn btn-danger rounded-3" style="width: 150px; height: 50px;" onclick="deleteYear()">ลบชั้นปี</button>
+
+                            <div class="mt-4" id="bodyinputForm">
+                                <div class="ms-5 d-inline fw-bold">ระบุเนื้อหาของกระบวนวิชา</div><div class="text-danger d-inline">*</div>
+
+                                <div class="mt-3 me-3 row">
+                                    <div class="col-1"></div>
+                                    <div class="col-8"></div>
+                                    <div class="col-1"></div>
+                                    <div class="col-1 text-center olnum1">
+                                        ลักษณะการเก็บชั่วโมงแบบที่ 1
+                                    </div>
+                                    <div class="col-1 text-center olnum2">
+                                        ลักษณะการเก็บชั่วโมงแบบที่ 2
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 me-3 row ol" id="1">
+                                    <div class="col-1 text-center on">
+                                        1
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="w-100 oin" required autocomplete="off" type="text">
+                                    </div>
+                                    <div class="col-1">
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="addSubOutLine()">+</button>
+                                    </div>
+                                    <div class="col-1">
+                                        <input class="w-100 olnum1" type="number" max="100" min="0">
+                                    </div>
+                                    <div class="col-1">
+                                        <input class="w-100 olnum2" type="number" max="100" min="0">
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 me-3 row ol" id="2">
+                                    <div class="col-1 text-center on">
+                                        2
+                                    </div>
+                                    <div class="col-8">
+                                        <input class="w-100 oin" required autocomplete="off" type="text">
+                                    </div>
+                                    <div class="col-1">
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="addSubOutLine()">+</button>
+                                    </div>
+                                    <div class="col-1">
+                                        <input class="w-100 olnum1" type="number" max="100" min="0">
+                                    </div>
+                                    <div class="col-1">
+                                        <input class="w-100 olnum2" type="number" max="100" min="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 me-3 row">
+                                <div class="col-1 text-center"></div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-success btn-md rounded-3 w-100" id="addOutline" onclick="addOutling()">เพิ่ม Outline</button>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-danger btn-md rounded-3 w-100" id="deleteOutline" onclick="delOutling()">ลบ Outline</button>
+                                </div>
+                                <div class="col-3"></div>
+                                <div class="col-2 text-danger text-center" style="font-size: 12px;">หมายเหตุ ต้องระบุอย่างน้อย 1 ลักษณะและถ้าไม่ระบุให้เว้นช่องว่างไว้</div>
                             </div>
 
                             <div class="text-center mt-5">
