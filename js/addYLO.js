@@ -87,7 +87,12 @@ $("#YLOform").submit(function(e) {
 
 function addYLOData(){
     if(!haveSameText()){
-        console.log("easy!!")
+        if(!isInDatabase()){
+            console.log("ไม่มี")
+        }
+        else{
+            alert("มีข้อมูล YLO นี้ในระบบอยู่แล้ว")
+        }
     }
 }
 
@@ -125,4 +130,15 @@ function haveSameText(){
         }
     }
     return hasSame;
+}
+
+function isInDatabase(){
+    db.collection("YLO").where( "PID", "==", "204").get().then((YLOdata) => {
+        if (YLOdata.exists){
+            return true;
+        }
+        else{
+            return false;
+        }
+    });
 }
