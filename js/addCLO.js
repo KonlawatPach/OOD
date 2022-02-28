@@ -11,6 +11,8 @@ class Form {
     }
 };
 
+// -----Info for pass data to database----
+
 var AllForm = {
     length: 2,
     CLOForm: [new Form(1), new Form(2)],
@@ -30,6 +32,17 @@ var AllForm = {
         }
     }
 };
+
+var CLO = db.collection("CLO");
+var year = 2564;
+var semester = 2;
+var cloID = 99;
+var CID = "109";
+var PID = "204";
+
+// ----end of Info part----
+
+// function for fill data and validate data
 
 function addCLO() {
     AllForm.addCLO(AllForm.length + 1);
@@ -66,20 +79,48 @@ function sortNumCLO(){
     $(".forSortCLO").append($(`<span class = "RedStar">*</span>`));
 }
 
-function submit() {
+async function submit() {
+    let isDup = checkDubplicated();
+    let isEmpty = checkEmptySpace();
+    let canAdd = await isInDatabase();
+    if (isEmpty || isDup || canAdd) {
+        if (checkDubplicated()) {
+            alert("มีการกรอกข้อมูลซ้ำ กรุณาทำการแก้ไข");
+            console.log("There are some \'Dupilcated description\'");
+        }else if (checkEmptySpace()) {
+            alert("ยังมีข้อความที่เป็นช่องว่างอยู่ กรุณาทำการแก้ไข");
+            console.log("There are some \'empty space left\'");
+        }else if (await isInDatabase()) {
+            alert("มีบางข้อความที่มีอยู่ในฐานข้อมูลแล้ว กรุณาแก้ไข")
+        }
+    }else {
+        // Fill info from textarea to array of object in AllForm
+        let i; let len = AllForm.length;
+        let x = document.getElementsByTagName("textarea");
+        for (i = 0; i < len; i++) {
+            AllForm.CLOForm[i].description = String(x[i].value);
+            console.log("Form("+ AllForm.CLOForm[i].number + ") des = "+AllForm.CLOForm[i].description);
 
+        }
+        uploadToCLO();
+        
+    }
     
-    if (checkDubplicated()) {
-        alert("มีการกรอกข้อมูลซ้ำ กรุณาทำการแก้ไข");
+}
+
+function uploadToCLO() {
+    let i;
+    for (i = 0; i < AllForm.length; i++) {
+        db.collection("CLO").add({
+            CLO_ID: cloID,
+            CLODescription: AllForm.CLOForm[i].description,
+            Semester: semester,
+            PID: PID,
+            CID: CID,
+            Academic_Year: year
+        })
     }
-    console.log(checkEmptySpace());
-    if (checkEmptySpace()) {
-        alert("ยังมีข้อความที่เป็นช่องว่างอยู่ กรุณาทำการแก้ไข");
-    }
-    db.collection("CLO").add({
-        CLO_ID: 1,
-        CLODescription: "ชายเกเร"
-    });
+    
 }
 
 function checkEmptySpace() {
@@ -106,7 +147,7 @@ function checkDubplicated() {
     let j;
     let duplicated = false;
     for(i = 0; i < x.length; i++) {
-        console.log("In loop");
+        //console.log("In loop");
         for (j = i+1; j < x.length; j++) {
             //console.log(temp.value);
             if ((x[i].value != "" || x[j].value != "") && x[i].value == x[j].value) {
@@ -118,4 +159,19 @@ function checkDubplicated() {
         }
     }
     return duplicated;
+}
+
+async function isInDatabase(){
+    let have = false;
+    await db.collection("CLO").where( "PID", "==", "204").where( "CID", "==", "111").where( "CLO_ID", "==", 0).get().then((CLOdata) => {
+        CLOdata.forEach((doc) => {
+            if (doc.exists){
+                have =  true;
+            }
+            else{
+                have = false;
+            }
+        });
+    });
+    return have;
 }
