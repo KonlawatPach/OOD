@@ -78,6 +78,7 @@ function sortassesment(AssessmentID){
     let y = document.getElementsByClassName("Assessment" + AssessmentID)
     for (let p = 1; p <= y.length; p++) {
         document.getElementsByClassName("Assessmentbody" + AssessmentID)[p-1].setAttribute("id", AssessmentID +"-"+ p );
+        console.log("id", AssessmentID +"-"+ p );
         document.getElementsByClassName("Assessment" + AssessmentID)[p-1].textContent = "วิธีการประเมิน "+ p;
         document.getElementsByClassName("Assessmentinput" + AssessmentID)[p-1].setAttribute("id", AssessmentID +"-"+ p );
         document.getElementsByClassName("addAssessmentbtn" + AssessmentID)[p-1].setAttribute( "onClick", "addAssessment('" + AssessmentID[0] + "-" + p + "')" );
