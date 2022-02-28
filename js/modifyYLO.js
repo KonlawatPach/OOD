@@ -1,7 +1,53 @@
-var lastYear = 2;
+class YLOdata {
+    constructor(YLOYear, YLONumber, YLODescription) {
+        this.PID = "204";
+        this.YLONumber = YLONumber;
+        this.YLOYear = YLOYear;
+        this.YLODescription = YLODescription;
+        this.ProgramYear = 2565;
+    }
+}
+
+var lastYear = 0;
 
 function DataLoading(){
-    //
+    let nowyear = 0;
+    let num;
+    db.collection("YLO").where( "PID", "==", "204").get().then((YLOdata) => {
+        YLOdata.forEach((doc) => {
+            nowyear = Math.max(nowyear, doc.data().YLOYear)
+        });
+        for(let i = 0; i < nowyear; i++){
+            lastYear++
+            $(`
+                <div class="bg-light mt-1 p-3 rounded-2" id="`+lastYear+`">
+                    <h5 class="ms-1 fw-bold">ชั้นปีที่ `+lastYear+`</h5>
+                    <div class="row mt-3 ms-4 ylobody`+lastYear+`" id="`+lastYear+`-1">
+                        <div class="col-1 p-0 text-center ylo`+lastYear+`">YLO `+lastYear+`-1<span class="text-danger"> *</span></div>
+                        <div class="col-9 p-0">
+                            <textarea class="w-100 yloinput`+lastYear+`" required autocomplete="off" type="text" id="ylo-`+lastYear+`-1" onchange="haveSameText()"></textarea>
+                        </div>
+                        <div class="col-1 p-0 text-center">
+                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn`+lastYear+`" onclick="addYLO('`+lastYear+`-1')">เพิ่ม YLO</button>
+                        </div>
+                        <div class="col-1 p-0 text-center">
+                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn`+lastYear+`" onclick="delYLO('`+lastYear+`-1')">ลบ YLO</button>
+                        </div>
+                    </div>
+                </div>
+            `).appendTo("#inputForm");
+        }
+        let yloID;
+        YLOdata.forEach((doc) => {
+            if(doc.data().YLONumber != 1){
+                yloID = doc.data().YLOYear + '-' + 1;
+                addYLO(yloID)
+            }
+        });
+        YLOdata.forEach((doc) => {
+            console.log(doc.data().YLOYear, doc.data().YLONumber, doc.data().YLODescription)
+        });
+    });
 }
 
 function addYear(){
@@ -35,7 +81,7 @@ function addYear(){
             </div>
         </div>
     `).appendTo("#inputForm");
-    document.getElementById("delYear").disabled = false;
+    if(lastYear !=1 ) document.getElementById("delYear").disabled = false;
 }
 
 function deleteYear(){
@@ -125,10 +171,43 @@ function haveSameText(){
     return hasSame;
 }
 
-function addYLOData(){
+async function addYLOData(){
     if(!haveSameText()){
-        console.log("easy!!")
+        await db.collection("YLO").where( "PID", "==", "204").get().then(async (YLOdata) => {
+            await YLOdata.forEach(async function(doc) {
+                await doc.ref.delete().then(() => {
+                    let ylodata = [];
+                    for(let year = 1; year<=lastYear; year++){
+                        for (let ylonum = 1; ylonum <= document.getElementsByClassName("yloinput"+year).length; ylonum++){
+                            ylodata.push(new YLOdata(year, ylonum, document.getElementsByClassName("yloinput"+year)[ylonum-1].value))
+                        }
+                    }          
+                    
+                    //add to database
+                    for(let i of ylodata){
+                        db.collection("YLO").add({
+                            PID: i.PID,
+                            YLONumber: i.YLONumber,
+                            YLOYear: i.YLOYear,
+                            YLODescription: i.YLODescription,
+                            ProgramYear: i.ProgramYear
+                        });
+                    }
+                    alert("แก้ไขข้อมูล YLO สำเร็จ")
+                })
+            });
+        });       
     }
+}
+
+async function deleteYLO(){
+    await db.collection("YLO").where( "PID", "==", "204").get().then(async (YLOdata) => {
+        await YLOdata.forEach(async function(doc) {
+            await doc.ref.delete();
+            alert("ลบข้อมูลสำเร็จ")
+            document.location='addYLO.html'
+        });
+    });
 }
 
 //call function

@@ -65,61 +65,9 @@
                     <div class="col-12 border border-1 border-dark text-start px-4 pb-4" style="height: fit-content; background-color: rgb(233, 233, 233);">
                         <form id="YLOform" onsubmit="addYLOData();return false;">
                             <div id="inputForm">
-                                <div class="bg-light mt-3 p-3 rounded-2" id="1">
-                                    <h5 class="ms-1 fw-bold">ชั้นปีที่ 1</h5>
-                                    <div class="row mt-3 ms-4 ylobody1" id="1-1">
-                                        <div class="col-1 p-0 text-center ylo1">YLO 1-1<span class="text-danger"> *</span></div>
-                                        <div class="col-9 p-0">
-                                            <textarea class="w-100 yloinput1" required autocomplete="off" type="text" id="ylo-1-1" onchange="haveSameText()"></textarea>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn1" onclick="addYLO('1-1')">เพิ่ม YLO</button>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-1')">ลบ YLO</button>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3 ms-4 ylobody1" id="1-2">
-                                        <div class="col-1 p-0 text-center ylo1">YLO 1-2<span class="text-danger"> *</span></div>
-                                        <div class="col-9 p-0">
-                                            <textarea class="w-100 yloinput1" required autocomplete="off" type="text" id="ylo-1-2" onchange="haveSameText()"></textarea>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn1" onclick="addYLO('1-2')">เพิ่ม YLO</button>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-2')">ลบ YLO</button>
-                                        </div>
-                                    </div>
-                                </div>
                                 
-                                <div class="bg-light mt-1 p-3 rounded-2" id="2">
-                                    <h5 class="ms-1 fw-bold">ชั้นปีที่ 2</h5>
-                                    <div class="row mt-3 ms-4 ylobody2" id="2-1">
-                                        <div class="col-1 p-0 text-center ylo2">YLO 2-1<span class="text-danger"> *</span></div>
-                                        <div class="col-9 p-0">
-                                            <textarea class="w-100 yloinput2" required autocomplete="off" type="text" id="ylo-2-1" onchange="haveSameText()"></textarea>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn2" onclick="addYLO('2-1')">เพิ่ม YLO</button>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn2" onclick="delYLO('2-1')">ลบ YLO</button>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3 ms-4 ylobody2" id="2-2">
-                                        <div class="col-1 p-0 text-center ylo2">YLO 2-2<span class="text-danger"> *</span></div>
-                                        <div class="col-9 p-0">
-                                            <textarea class="w-100 yloinput2" required autocomplete="off" type="text" id="ylo-2-2" onchange="haveSameText()"></textarea>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn2" onclick="addYLO('2-2')">เพิ่ม YLO</button>
-                                        </div>
-                                        <div class="col-1 p-0 text-center">
-                                            <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn2" onclick="delYLO('2-2')">ลบ YLO</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                
+                               
                             </div>
 
                             <div class="text-center mt-2 p-4 rounded-3 bg-light mx-auto" style="width: fit-content;">
@@ -134,6 +82,9 @@
                                 <button type="button" class="btn btn-secondary" style="width: 100px;">ย้อนกลับ</button>
                             </div>
                         </form>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-lg btn-danger" onclick="deleteYLO()">ลบข้อมูล YLO </button>
+                        </div>                        
                     </div>
                 </div>
             </div>

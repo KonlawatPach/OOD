@@ -1,3 +1,13 @@
+class YLOdata {
+    constructor(YLOYear, YLONumber, YLODescription) {
+      this.PID = "204";
+      this.YLONumber = YLONumber;
+      this.YLOYear = YLOYear;
+      this.YLODescription = YLODescription;
+      this.ProgramYear = 2565;
+    }
+}
+
 var lastYear = 2;
 
 function addYear(){
@@ -85,10 +95,28 @@ $("#YLOform").submit(function(e) {
     e.preventDefault();
 });
 
-function addYLOData(){
+async function addYLOData(){
     if(!haveSameText()){
-        if(!isInDatabase()){
-            console.log("ไม่มี")
+        if(!await isInDatabase()){
+            //new object
+            let ylodata = [];
+            for(let year = 1; year<=lastYear; year++){
+                for (let ylonum = 1; ylonum <= document.getElementsByClassName("yloinput"+year).length; ylonum++){
+                    ylodata.push(new YLOdata(year, ylonum, document.getElementsByClassName("yloinput"+year)[ylonum-1].value))
+                }
+            }          
+            
+            //add to database
+            for(let i of ylodata){
+                db.collection("YLO").add({
+                    PID: i.PID,
+                    YLONumber: i.YLONumber,
+                    YLOYear: i.YLOYear,
+                    YLODescription: i.YLODescription,
+                    ProgramYear: i.ProgramYear
+                });
+            }
+            alert("เพิ่มข้อมูล YLO สำเร็จ")
         }
         else{
             alert("มีข้อมูล YLO นี้ในระบบอยู่แล้ว")
@@ -132,13 +160,17 @@ function haveSameText(){
     return hasSame;
 }
 
-function isInDatabase(){
-    db.collection("YLO").where( "PID", "==", "204").get().then((YLOdata) => {
-        if (YLOdata.exists){
-            return true;
-        }
-        else{
-            return false;
-        }
+async function isInDatabase(){
+    let have = false;
+    await db.collection("YLO").where( "PID", "==", "204").get().then((YLOdata) => {
+        YLOdata.forEach((doc) => {
+            if (doc.exists){
+                have =  true;
+            }
+            else{
+                have = false;
+            }
+        });
     });
+    return have;
 }

@@ -1,3 +1,19 @@
+class PLO {
+    constructor(PLODescription) {
+        this.PID = "204";
+        this.PLODescription = PLODescription;
+        this.ProgramYear = 2565;
+    }
+}
+
+class subPLO {
+    constructor(subPLODescription) {
+        this.PID = "204";
+        this.PLOID = "204";
+        this.SubPLOdescription = subPLODescription;
+    }
+}
+
 function addPLO(PLOnumber){
     if(document.getElementsByClassName("plo").length > PLOnumber) addSubPLOdata(PLOnumber);
     $("#"+PLOnumber).after(`
@@ -158,7 +174,28 @@ $("#PLOSubPLOform").submit(function(e) {
 
 function addPLOSubPLOData(){
     if(!haveSameText()){
-        console.log("easy!!")
+        if(!await isInDatabase()){
+            //new object
+            let plodata = [];
+            for(let p = 1; p <= document.getElementsByClassName("ploinput").length; p++){
+                    plodata.push(new YLOdata(PLODescription))
+            }        
+            
+            //add to database
+            for(let i of plodata){
+                db.collection("YLO").add({
+                    PID: i.PID,
+                    YLONumber: i.YLONumber,
+                    YLOYear: i.YLOYear,
+                    YLODescription: i.YLODescription,
+                    ProgramYear: i.ProgramYear
+                });
+            }
+            alert("เพิ่มข้อมูล YLO สำเร็จ")
+        }
+        else{
+            alert("มีข้อมูล YLO นี้ในระบบอยู่แล้ว")
+        }
     }
 }
 
@@ -210,4 +247,19 @@ function haveSameText(){
         }
     }
     return hasSame;
+}
+
+async function isInDatabase(){
+    let have = false;
+    await db.collection("PLO").where( "PID", "==", "204").get().then((PLOdata) => {
+        PLOdata.forEach((doc) => {
+            if (doc.exists){
+                have =  true;
+            }
+            else{
+                have = false;
+            }
+        });
+    });
+    return have;
 }
