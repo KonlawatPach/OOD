@@ -64,10 +64,10 @@
                                 <h3 class="ms-1 fw-bold">PLOs</h3>
                                 <!-- ส่วนล่างของกล่อง -->
                                 <div class="col-12 border border-1 border-dark text-start " style="height: fit-content; background-color: rgb(233, 233, 233);">
-                                    <div class="bg-light  p-3 rounded-2" id="1">
+                                    
                                         <h5 class="text-center fw-bold " >SubPLO</h5>
                                         <h5 class="ms-1 fw-bold">รายละเอียดกิจกรรม</h5>
-                                        <div class="row mt-3 ms-4 ylobody1" i   d="1-1">
+                                        <div class="row mt-3 ms-4 ylobody1" id="1-1">
                                             <div class="col-2 p-0 text-center ylo1">รายละเอียดกิจกรรมที่ 1<span class="text-danger"> *</span></div>
                                             <div class="col-8 p-0">
                                                 <textarea class="w-100 yloinput1" required autocomplete="off" type="text" id="ylo-1-1" onchange="haveSameText()"></textarea>
@@ -79,7 +79,7 @@
                                                 <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-1')">ลบกิจกรรม</button>
                                             </div>
                                         </div>
-                                        <div class="row mt-3 ms-4 ylobody1" id="1-2">
+                                        <div class="row mt-3 ms-4  ylobody1" id="1-2">
                                             <div class="col-2 p-0 text-center ylo1">รายละเอียดกิจกรรมที่ 2<span class="text-danger"> *</span></div>
                                             <div class="col-8 p-0">
                                                 <textarea class="w-100 yloinput1" required autocomplete="off" type="text" id="ylo-1-2" onchange="haveSameText()"></textarea>
@@ -91,15 +91,16 @@
                                                 <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn1" onclick="delYLO('1-2')">ลบกิจกรรม</button>
                                             </div>
                                         </div>
+                                    
                                         <!-- ส่วนวิธีการประเมิน -->
                                         <h5 class="ms-1 fw-bold">วิธีการประเมิน</h5>
-                                        <div class="row mt-3 ms-4 Activitybody1" i   d="1-1">
+                                        <div class="row mt-3 ms-4 Activitybody1" id="1-1">
                                             <div class="col-2 p-0 text-center Activity1">วิธีการประเมิน 1<span class="text-danger"> *</span></div>
                                             <div class="col-8 p-0">
-                                                <textarea class="w-100 Activitinput1" required autocomplete="off" type="text" id="Activity-1-1" onchange="haveSameText()"></textarea>
+                                                <textarea class="w-100 Activityinput1" required autocomplete="off" type="text" id="Activity-1-1" onchange="haveSameTexttwo()"></textarea>
                                             </div>
                                             <div class="col-1 p-0 text-center">
-                                                <button type="button" class="btn btn-success btn-sm rounded-2 addActivitybtn1" onclick="addActivity('1-1')">เพิ่มกิจกรรม</button>
+                                                <button type="button" class="btn btn-success btn-sm rounded-3 addActivitybtn1" onclick="addActivity('1-1')">เพิ่มกิจกรรม</button>
                                             </div>
                                             <div class="col-1 p-0 text-center">
                                                 <button type="button" class="btn btn-danger btn-sm rounded-3 delActivitybtn1" onclick="delActivity('1-1')">ลบกิจกรรม</button>
@@ -108,18 +109,17 @@
                                         <div class="row mt-3 ms-4 Activitybody1" id="1-2">
                                             <div class="col-2 p-0 text-center Activity1">วิธีการประเมิน 2<span class="text-danger"> *</span></div>
                                             <div class="col-8 p-0">
-                                                <textarea class="w-100 Activityinput1" required autocomplete="off" type="text" id="Activity-1-2" onchange="haveSameText()"></textarea>
-                                            </div>
+                                                <textarea class="w-100 Activityinput1" required autocomplete="off" type="text" id="Activity-1-2" onchange="haveSameTexttwo()"></textarea>
+                                            </div>  
                                             <div class="col-1 p-0 text-center">
                                                 <button type="button" class="btn btn-success btn-sm rounded-3 addActivitybtn1" onclick="addActivity('1-2')">เพิ่มกิจกรรม</button>
                                             </div>
                                             <div class="col-1 p-0 text-center">
                                                 <button type="button" class="btn btn-danger btn-sm rounded-3 delActivitybtn1" onclick="delActivity('1-2')">ลบกิจกรรม</button>
                                             </div>
-                                    </div>
+                                        </div>
+                                    
                                 </div>
-                                
-                            </div>
              
 
                                 <div class="text-center mt-5">
@@ -128,7 +128,7 @@
                                     <button type="button" class="btn btn-secondary" style="width: 100px;">ย้อนกลับ</button>
                                 </div>
                             
-                        </div> 
+                            </div> 
                     </form>
                 </div>
             </div>
