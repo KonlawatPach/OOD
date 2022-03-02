@@ -13,30 +13,30 @@ var lastYear = 2;
 function addYear(){
     lastYear++
     $(`
-        <div class="bg-light mt-1 p-3 rounded-2" id="`+lastYear+`">
-            <h5 class="ms-1 fw-bold">ชั้นปีที่ `+lastYear+`</h5>
-            <div class="row mt-3 ms-4 ylobody`+lastYear+`" id="`+lastYear+`-1">
-                <div class="col-1 p-0 text-center ylo`+lastYear+`">YLO `+lastYear+`-1<span class="text-danger"> *</span></div>
+        <div class="bg-light mt-1 p-3 rounded-2" id="${lastYear}">
+            <h5 class="ms-1 fw-bold">ชั้นปีที่ ${lastYear}</h5>
+            <div class="row mt-3 ms-4 ylobody${lastYear}" id="${lastYear}-1">
+                <div class="col-1 p-0 text-center ylo${lastYear}">YLO ${lastYear}-1<span class="text-danger"> *</span></div>
                 <div class="col-9 p-0">
-                    <textarea class="w-100 yloinput`+lastYear+`" required autocomplete="off" type="text" id="ylo-`+lastYear+`-1" onchange="haveSameText()"></textarea>
+                    <textarea class="w-100 yloinput${lastYear}" required autocomplete="off" type="text" id="ylo-${lastYear}-1" onchange="haveSameText()"></textarea>
                 </div>
                 <div class="col-1 p-0 text-center">
-                    <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn`+lastYear+`" onclick="addYLO('`+lastYear+`-1')">เพิ่ม YLO</button>
+                    <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn${lastYear}" onclick="addYLO('${lastYear}-1')">เพิ่ม YLO</button>
                 </div>
                 <div class="col-1 p-0 text-center">
-                    <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn`+lastYear+`" onclick="delYLO('`+lastYear+`-1')">ลบ YLO</button>
+                    <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn${lastYear}" onclick="delYLO('${lastYear}-1')">ลบ YLO</button>
                 </div>
             </div>
-            <div class="row mt-3 ms-4 ylobody`+lastYear+`" id="`+lastYear+`-2">
-                <div class="col-1 p-0 text-center ylo`+lastYear+`">YLO `+lastYear+`-2<span class="text-danger"> *</span></div>
+            <div class="row mt-3 ms-4 ylobody${lastYear}" id="${lastYear}-2">
+                <div class="col-1 p-0 text-center ylo${lastYear}">YLO ${lastYear}-2<span class="text-danger"> *</span></div>
                 <div class="col-9 p-0">
-                    <textarea class="w-100 yloinput`+lastYear+`" required autocomplete="off" type="text" id="ylo-`+lastYear+`-2" onchange="haveSameText()"></textarea>
+                    <textarea class="w-100 yloinput${lastYear}" required autocomplete="off" type="text" id="ylo-${lastYear}-2" onchange="haveSameText()"></textarea>
                 </div>
                 <div class="col-1 p-0 text-center">
-                    <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn`+lastYear+`" onclick="addYLO('`+lastYear+`-2')">เพิ่ม YLO</button>
+                    <button type="button" class="btn btn-success btn-sm rounded-3 addylobtn${lastYear}" onclick="addYLO('${lastYear}-2')">เพิ่ม YLO</button>
                 </div>
                 <div class="col-1 p-0 text-center">
-                    <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn`+lastYear+`" onclick="delYLO('`+lastYear+`-2')">ลบ YLO</button>
+                    <button type="button" class="btn btn-danger btn-sm rounded-3 delylobtn${lastYear}" onclick="delYLO('${lastYear}-2')">ลบ YLO</button>
                 </div>
             </div>
         </div>
